@@ -11996,8 +11996,30 @@
   },
   "cases": [
     {
+      "id": "extension-inactive",
+      "command": "mori commit -m 'x'",
+      "enabled_extensions": [],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [],
+      "rule_id": "command.mori.commit"
+    },
+    {
       "id": "init-review",
       "command": "mori init",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [
+        0
+      ],
+      "rule_id": "command.mori.init"
+    },
+    {
+      "id": "init-session-review",
+      "command": "mori init ./mem --session workshop",
       "enabled_extensions": [
         "command.mori"
       ],
@@ -12022,8 +12044,34 @@
       "rule_id": "command.mori.add"
     },
     {
+      "id": "add-stdin-review",
+      "command": "mori add - --kind chat",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [
+        0
+      ],
+      "rule_id": "command.mori.add"
+    },
+    {
       "id": "checkout-review",
-      "command": "mori checkout main",
+      "command": "mori checkout feature",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [
+        0
+      ],
+      "rule_id": "command.mori.checkout"
+    },
+    {
+      "id": "checkout-create-review",
+      "command": "mori checkout -b feature",
       "enabled_extensions": [
         "command.mori"
       ],
@@ -12036,7 +12084,20 @@
     },
     {
       "id": "merge-review",
-      "command": "mori merge other",
+      "command": "mori merge feature",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [
+        0
+      ],
+      "rule_id": "command.mori.merge"
+    },
+    {
+      "id": "merge-message-review",
+      "command": "mori merge feature -m 'merge feature'",
       "enabled_extensions": [
         "command.mori"
       ],
@@ -12062,7 +12123,7 @@
     },
     {
       "id": "commit-review",
-      "command": "mori commit -m 'ship it'",
+      "command": "mori commit -m 'capture session'",
       "enabled_extensions": [
         "command.mori"
       ],
@@ -12075,7 +12136,7 @@
     },
     {
       "id": "reset-review",
-      "command": "mori reset --hard HEAD~1",
+      "command": "mori reset",
       "enabled_extensions": [
         "command.mori"
       ],
@@ -12085,6 +12146,32 @@
         0
       ],
       "rule_id": "command.mori.reset"
+    },
+    {
+      "id": "reset-path-review",
+      "command": "mori reset notes.md",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [
+        0
+      ],
+      "rule_id": "command.mori.reset"
+    },
+    {
+      "id": "stash-park-review",
+      "command": "mori stash -m 'wip'",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [
+        0
+      ],
+      "rule_id": "command.mori.stash"
     },
     {
       "id": "stash-pop-review",
@@ -12100,8 +12187,21 @@
       "rule_id": "command.mori.stash"
     },
     {
+      "id": "stash-drop-review",
+      "command": "mori stash drop",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [
+        0
+      ],
+      "rule_id": "command.mori.stash"
+    },
+    {
       "id": "branch-create-review",
-      "command": "mori branch feature/x",
+      "command": "mori branch experiment",
       "enabled_extensions": [
         "command.mori"
       ],
@@ -12152,15 +12252,26 @@
       "rule_id": "command.mori.recall-raw"
     },
     {
-      "id": "stash-list-carved",
-      "command": "mori stash list",
+      "id": "init-help-carved",
+      "command": "mori init --help",
       "enabled_extensions": [
         "command.mori"
       ],
       "disabled_permissions": [],
       "expected_action": "review",
       "expected_effective_segments": [],
-      "rule_id": "command.mori.stash"
+      "rule_id": "command.mori.init"
+    },
+    {
+      "id": "init-short-help-carved",
+      "command": "mori init -h",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [],
+      "rule_id": "command.mori.init"
     },
     {
       "id": "commit-help-carved",
@@ -12172,6 +12283,39 @@
       "expected_action": "review",
       "expected_effective_segments": [],
       "rule_id": "command.mori.commit"
+    },
+    {
+      "id": "stash-list-carved",
+      "command": "mori stash list",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [],
+      "rule_id": "command.mori.stash"
+    },
+    {
+      "id": "stash-help-carved",
+      "command": "mori stash --help",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [],
+      "rule_id": "command.mori.stash"
+    },
+    {
+      "id": "branch-help-carved",
+      "command": "mori branch --help",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [],
+      "rule_id": "command.mori.branch-create"
     },
     {
       "id": "show-without-raw-no-rule",
@@ -12215,6 +12359,43 @@
       "disabled_permissions": [],
       "expected_action": "review",
       "expected_effective_segments": [],
+      "rule_id": "command.mori.commit"
+    },
+    {
+      "id": "find-no-rule",
+      "command": "mori find --contains shipping",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [],
+      "rule_id": "command.mori.commit"
+    },
+    {
+      "id": "compile-no-rule",
+      "command": "mori compile notes.md",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [],
+      "expected_action": "review",
+      "expected_effective_segments": [],
+      "rule_id": "command.mori.commit"
+    },
+    {
+      "id": "commit-permission-disabled",
+      "command": "mori commit -m 'x'",
+      "enabled_extensions": [
+        "command.mori"
+      ],
+      "disabled_permissions": [
+        "command.mori.permission.commit"
+      ],
+      "expected_action": "block",
+      "expected_effective_segments": [
+        0
+      ],
       "rule_id": "command.mori.commit"
     },
     {
