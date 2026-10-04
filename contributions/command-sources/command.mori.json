@@ -4,7 +4,7 @@
     "extension_id": "command.mori",
     "version": "1.0.0",
     "name": "Mori cognition VCS command protection",
-    "description": "Reviews Mori (cognition VCS) mutations \u2014 init, stage, checkout, merge, rebase, commit, reset, stash park/pop/drop, and branch \u2014 plus `show --raw` / `recall --raw` STTP dumps. `mori stash list` is a safe variant; bare `mori branch` list still reviews in v1 because matchers cannot require a create operand after the subcommand. Other reads (status, log, show, recall, find, compile) remain automatic. Community coverage does not certify the upstream tool.",
+    "description": "Reviews Mori (cognition VCS) mutations \u2014 init, stage, checkout, merge, rebase, commit, reset, stash park/pop/drop, and branch \u2014 plus `show --raw` / `recall --raw` STTP dumps. `mori stash list` and `--help`/`-h` are safe variants of those rules. Other read subcommands are not matched by this source; base Guard policy still applies to the `mori` binary. Community coverage does not certify the upstream tool.",
     "action_classes": [
       "Mori cognition workspace mutation",
       "Mori stored-context dump"
