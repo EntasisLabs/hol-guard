@@ -39,7 +39,7 @@
     "license": "MIT",
     "icon": {
       "kind": "react-icon",
-      "name": "HiMiniCircleStack",
+      "name": "HiMiniFolder",
       "background": "#0F766E"
     },
     "publisher": {
